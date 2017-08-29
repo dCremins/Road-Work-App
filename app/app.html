@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <title>Electron Boilerplate</title>
+  <link href="stylesheets/main.css" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+  	<h1>Basic Work Zone Safety</h1>
+
+  	<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+  	 viewbox="0 0 640 250" style="enable-background:new 0 0 640 250;" xml:space="preserve">
+  	<g>
+  		<line class="st0" x1="10" y1="5" x2="620" y2="5"/>
+  			<line class="st1" x1="25" y1="80" x2="620" y2="80"/>
+  		<line class="st0" x1="10" y1="150" x2="620" y2="150"/>
+  	</g>
+  	<g>
+  		<g>
+  		</g>
+  	</g>
+  	<line id="buffer" class="st0" x1="129" y1="200" x2="129" y2="200"/>
+  	<text id="bufferLength" y="220"></text>
+  	</svg>
+
+  	<button onclick="moveAll()">Populate All</button>
+  	<button onclick="refreshAll()">Clear All</button>
+
+  	<div class="container">
+  		<div class="column">
+  			<h2>Group 1 - Green</h2>
+  			<form id="group1" class="form">
+  				<div class="container">
+  					<div class="column image-options">
+  						Sign One:<br /><br />
+  						<input type="radio" name="G1shown" value="image" checked> Image
+  						<input type="radio" class="radio" name="G1shown" value="text"> Text <br />
+  						<select id="g1_sign_image" class="image-select">
+  							<option value="flagger">Flagger</option>
+  							<option value="rlc">Right Lane Closing</option>
+  							<option value="llc">Left Lane Closing</option>
+  						</select>
+  						<input class="image-select" style="display:none;"	id="g1_sign_text" type="text" value="Right Lane Closed Ahead"/>
+  						Placement: <input id="g1_sign_placement" type="text" value="100"/>
+  					</div>
+  					<div class="column">
+  						<svg version="1.1" id="g1_sign"
+  						xmlns="http://www.w3.org/2000/svg"
+  						xmlns:xlink="http://www.w3.org/1999/xlink"
+  						x="0px" y="0px"
+  						viewbox="0 0 100 100">
+  							<g id="sign1">
+  								<polygon class="st2 orange" points="50,0 0,50 50,100 100,50" />
+  								<g id="g1_signgroup">
+  									<path d="M57.1,58c-0.2,1-0.3,2-0.5,2.9c-0.4,2.3-0.8,4.6-1.1,6.9c-0.4,2.2-0.7,4.4-1.1,6.7c-0.1,0.7-0.2,1.4-0.4,2.1
+  										c-0.2,0.7-0.2,1.4-0.4,2.1c0,0.1-0.1,0.2-0.2,0.2c-0.7,0-1.5,0-2.2,0c-0.2,0-0.2-0.1-0.2-0.2c0-1.3,0-2.5,0-3.8
+  										c0-3.8-0.1-7.7-0.1-11.5c0-4.3-0.1-8.6-0.1-13c0-2.5,0-5-0.1-7.5c0-0.2,0-0.3-0.3-0.3c-2.1-0.4-4.1-0.8-6.2-1.2
+  										c-2.2-0.4-4.4-0.8-6.5-1.2c-0.9-0.2-1.8-0.4-2.7-0.5c-0.2,0-0.3-0.1-0.3-0.3c0-0.7,0-1.5,0-2.2c0-0.2,0-0.3,0.2-0.3
+  										c9.2,0,18.3,0,27.5,0c0.6,0,1.2,0.2,1.7,0.3c2.8,0.5,5.5,1.1,8.3,1.6c0.5,0.1,0.5,0.1,0.6-0.4c0.1-0.4,0.2-0.8,0.4-1.2
+  										c0.4-1,0.7-2,1.1-3c0.1-0.1,0.1-0.2,0.2-0.1c0.8,0.2,1.6,0.3,2.4,0.5c0.2,0,0.2,0.1,0.2,0.3c-0.1,0.5-0.3,1.1-0.4,1.7
+  										c-0.6,2.2-1.1,4.4-1.7,6.7c-0.1,0.2-0.1,0.3-0.4,0.3c-2.2-0.2-4.4-0.3-6.5-0.5c-1.7-0.1-3.3-0.2-5-0.4c-0.2,0-0.4,0-0.5,0
+  										c-0.1,0-0.1,0-0.1,0.2c0.1,2.1,0.3,4.2,0.4,6.2c0.1,1.9,0.2,3.8,0.4,5.7c0.1,1.5,0.2,3.1,0.3,4.6c0.2,2.3,0.3,4.5,0.5,6.8
+  										c0.2,2.9,0.4,5.8,0.6,8.7c0.1,1.3,0.2,2.6,0.3,3.9c0,0.2,0,0.3-0.2,0.3c-0.7,0-1.5,0-2.2,0c-0.2,0-0.2-0.1-0.3-0.2
+  										c-0.6-2.3-1.1-4.6-1.7-6.8c-1.2-4.4-2.2-8.8-3.3-13.2C57.3,58.3,57.2,58.2,57.1,58z"/>
+  									<path d="M33.7,44.1c0,2.4,0,4.8,0,7.1c0,0.2-0.1,0.3-0.3,0.3c-3.8,0-7.7,0-11.5,0c-0.2,0-0.2,0-0.2-0.2c0-4.8,0-9.5,0-14.3
+  										c0-0.2,0.1-0.3,0.3-0.3c3.8,0,7.7,0,11.5,0c0.2,0,0.2,0.1,0.2,0.2C33.7,39.3,33.7,41.7,33.7,44.1z"/>
+  									<path d="M61.9,29.4c0,3.2-2.7,5.8-5.9,5.8c-3.3,0-5.9-2.8-5.9-5.8c0-3,2.6-5.8,5.9-5.8C59.2,23.6,61.9,26.2,61.9,29.4z"/>
+  								</g>
+  							</g>
+  						</svg>
+  					</div>
+  				</div>
+  				Transition Taper: <input type="text" value="150"/>
+  			</form>
+  			<br />
+  			<button onclick="move('group1', 'green')">Render</button>
+  			<button onclick="refresh('group1')">Clear</button>
+  		</div>
+  		<div class="column">
+  			<h2>Group 2 - Red</h2>
+  			<form id="group2" class="form">
+  				Sign Spacing: <input type="text" value="200"/>
+  				Transition Taper: <input type="text" value="140"/>
+  			</form>
+  			<br />
+  			<button onclick="move('group2', 'red')">Render</button>
+  			<button onclick="refresh('group2')">Clear</button>
+  		</div>
+  		<div class="column">
+  			<h2>Group 3 - Orange</h2>
+  			<form id="group3" class="form">
+  				Sign Spacing: <input type="text" value="300"/>
+  				Transition Taper: <input type="text" value="130"/>
+  			</form>
+  			<br />
+  			<button onclick="move('group3', 'orange')">Render</button>
+  			<button onclick="refresh('group3')">Clear</button>
+  		</div>
+  	</div>
+  	<div class="container">
+  		<div class="column">
+  			<h2>Group 4 - Yellow</h2>
+  			<form id="group4" class="form">
+  				Sign Spacing: <input type="text" value="400"/>
+  				Transition Taper: <input type="text" value="120"/>
+  			</form>
+  			<br />
+  			<button onclick="move('group4', 'yellow')">Render</button>
+  			<button onclick="refresh('group4')">Clear</button>
+  		</div>
+  		<div class="column">
+  			<h2>Group 5 - Blue</h2>
+  			<form id="group5" class="form">
+  				Sign Spacing: <input type="text" value="500"/>
+  				Transition Taper: <input type="text" value="110"/>
+  			</form>
+  			<br />
+  			<button onclick="move('group5', 'blue')">Render</button>
+  			<button onclick="refresh('group5')">Clear</button>
+  		</div>
+  		<div class="column">
+  			<h2>Group 6 - Purple</h2>
+  			<form id="group6" class="form">
+  				Sign Spacing: <input type="text" value="600"/>
+  				Transition Taper: <input type="text" value="100"/>
+  			</form>
+  			<br />
+  			<button onclick="move('group6', 'purple')">Render</button>
+  			<button onclick="refresh('group6')">Clear</button>
+  		</div>
+  	</div>
+
+  <footer>
+  	<script type="text/javascript" src="js/sign.js"></script>
+  	<script type="text/javascript" src="js/move.js"></script>
+  	<script type="text/javascript" src="js/refresh.js"></script>
+  </footer>
+  </body>
+</html>
