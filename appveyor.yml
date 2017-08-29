@@ -19,4 +19,4 @@ install:
 test_script:
   - yarn versions
   - yarn test
-  - yarn e2e
+  - yarn release
