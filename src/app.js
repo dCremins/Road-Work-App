@@ -5,7 +5,7 @@ import './helpers/context_menu.js';
 import './helpers/external_links.js';
 
 // All stuff below is just to show you how it works. You can delete all of it.
-import { remote } from 'electron';
+/*import { remote } from 'electron';
 import jetpack from 'fs-jetpack';
 import { greet } from './hello_world/hello_world';
 import env from './env';
@@ -28,3 +28,4 @@ document.querySelector('#os').innerHTML = osMap[process.platform];
 document.querySelector('#author').innerHTML = manifest.author;
 document.querySelector('#env').innerHTML = env.name;
 document.querySelector('#electron-version').innerHTML = process.versions.electron;
+*/
