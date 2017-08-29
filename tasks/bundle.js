@@ -39,22 +39,17 @@ module.exports = (src, dest, opts) => {
     cached[src] = bundle;
 
     const jsFile = path.basename(dest);
-    return bundle.generate({
+    const result = bundle.generate({
       format: 'cjs',
       sourceMap: true,
       sourceMapFile: jsFile,
-    }).then(result => {
-      // Wrap code in self invoking function so the constiables don't
-      // pollute the global namespace.
-      const isolatedCode = `(function () {${result.code}\n}());`;
-      return Promise.all([
-        jetpack.writeAsync(dest, `${isolatedCode}\n//# sourceMappingURL=${jsFile}.map`),
-        jetpack.writeAsync(`${dest}.map`, result.map.toString()),
-      ]);
-    })
-  })
-  .catch(e => {
-    console.error(e);
-    throw e;
+    });
+    // Wrap code in self invoking function so the constiables don't
+    // pollute the global namespace.
+    const isolatedCode = `(function () {${result.code}\n}());`;
+    return Promise.all([
+      jetpack.writeAsync(dest, `${isolatedCode}\n//# sourceMappingURL=${jsFile}.map`),
+      jetpack.writeAsync(`${dest}.map`, result.map.toString()),
+    ]);
   });
 };

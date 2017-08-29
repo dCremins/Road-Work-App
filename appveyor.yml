@@ -17,7 +17,6 @@ install:
   - yarn
 
 test_script:
-  - node --version
   - yarn versions
   - yarn test
   - yarn e2e
