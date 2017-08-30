@@ -15,12 +15,11 @@ install:
   - ps: Install-Product node $env:nodejs_version
   - npm install npm
   - yarn
-  - yarn electron-builder install-app-deps
 
 test_script:
   - yarn versions
   - yarn test
 
 build_script:
-  - yarn build
-  - yarn dist
+  - yarn electron-builder install-app-deps
+  - yarn release
