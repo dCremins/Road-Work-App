@@ -19,6 +19,8 @@
   },
   "scripts": {
     "postinstall": "install-app-deps",
+    "build": "gulp build",
+    "dist": "electron-builder -mwl",
     "prerelease": "gulp build --env=production",
     "release": "build",
     "start": "gulp start",
