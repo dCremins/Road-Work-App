@@ -17,8 +17,7 @@
     ],
     "publish": null,
     "win": {
-      "target": "nsis",
-      "remoteReleases": "https://github.com/dCremins/Road-Work-App.git"
+      "publish": "github"
     }
   },
   "repository": {
