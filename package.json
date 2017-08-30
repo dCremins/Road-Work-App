@@ -16,8 +16,7 @@
       "package.json"
     ],
     "win": {
-      "target": "nsis",
-      "remoteReleases": "https://github.com/develar/onshape-desktop-shell"
+      "target": "nsis"
     }
   },
   "repository": {
