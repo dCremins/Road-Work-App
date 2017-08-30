@@ -18,13 +18,12 @@ install:
   - npm install -g npm@latest
   - npm install electron-builder@next
   - npm install
-  - npm prune
 
 test_script:
   - yarn versions
   - yarn test
 
 build_script:
-  - node --versions
+  - node --version
   - npm --version
   - npm run release
