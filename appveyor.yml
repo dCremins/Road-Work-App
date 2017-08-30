@@ -5,8 +5,6 @@ os: unstable
 skip_tags: true
 
 environment:
-  GH_TOKEN:
-      secure: kzMnHRuGCZghNhoPietjDsKPdFKvwoHn3f8hXpRfV+0F0CnsIDe+im2ZO/bdC+En
   matrix:
     - nodejs_version: "6"
 
