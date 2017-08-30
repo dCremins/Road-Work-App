@@ -20,7 +20,7 @@
   "scripts": {
     "postinstall": "install-app-deps",
     "build": "gulp build",
-    "dist": "electron-builder -mwl",
+    "dist": "electron-builder --publish=always -mwl",
     "prerelease": "gulp build --env=production",
     "release": "build",
     "start": "gulp start",
