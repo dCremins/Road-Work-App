@@ -16,6 +16,7 @@ install:
   - npm install npm
   - npm install yarn
   - yarn
+  - yarn electron-builder install-app-deps
 
 test_script:
   - yarn versions
