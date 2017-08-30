@@ -21,6 +21,10 @@
       "target": "nsis"
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dCremins/Road-Work-App.git"
+  },
   "scripts": {
     "postinstall": "install-app-deps",
     "build": "gulp build",
