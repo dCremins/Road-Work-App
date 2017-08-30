@@ -22,4 +22,5 @@ test_script:
   - yarn test
 
 build_script:
+  - yarn build
   - yarn dist
