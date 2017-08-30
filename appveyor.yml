@@ -14,14 +14,12 @@ cache:
 install:
   - ps: Install-Product node $env:nodejs_version
   - npm install -g npm@latest
-  - npm install electron-builder@next
-  - npm install
+  - yarn add electron-builder@next
+  - yarn
 
 test_script:
   - yarn versions
   - yarn test
 
 build_script:
-  - node --version
-  - npm --version
-  - npm run release
+  - yarn release
