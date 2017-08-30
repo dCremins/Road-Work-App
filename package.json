@@ -17,7 +17,8 @@
     ],
     "publish": null,
     "win": {
-      "publish": "github"
+      "publish": "github",
+      "target": "nsis"
     }
   },
   "scripts": {
