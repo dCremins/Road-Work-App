@@ -1,11 +1,10 @@
 {
-  "name": "electron-boilerplate",
-  "productName": "Electron Boilerplate",
-  "description": "Starter for your Electron application",
+  "name": "Road-Work-Appwork-app",
+  "productName": "Road Work App",
+  "description": "Instructional Application for use with the ITRE Road Work Safety Training Course",
   "version": "0.0.1",
-  "author": "Mr. Gumby <mr.gumby@example.com>",
-  "copyright": "© 2016, Gumby inc.",
-  "homepage": "http://example.com",
+  "author": "Devin Cremins <drcremin@ncsu.edu>",
+  "homepage": "http://octopusoddments.com",
   "license": "MIT",
   "main": "app/background.js",
   "build": {
@@ -17,15 +16,17 @@
     ],
     "win": {
       "target": "nsis"
+    },
+    "publish": {
+      "provider": "github",
+      "private": false
     }
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dCremins/Road-Work-App.git"
   },
   "scripts": {
     "postinstall": "install-app-deps",
     "prerelease": "gulp build --env=production",
+    "build": "gulp build",
+    "dist": "electron-builder --publish=always -mwl",
     "release": "build",
     "start": "gulp start",
     "pretest": "gulp build-unit --env=test",
