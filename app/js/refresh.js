@@ -39,6 +39,29 @@ function refresh(group) {
     cap2a.parentNode.removeChild(cap2a);
     texta.parentNode.removeChild(texta);
   }
+  j = 1
+  for (j=1; j<=3; j++) {
+    if (document.getElementById(group+'_'+j)) {
+      var hold = document.getElementById(group+'_'+j)
+      hold.parentNode.removeChild(hold)
+    }
+    if (document.getElementById(group+'_linegroup_'+j)) {
+      hold = document.getElementById(group+'_linegroup_'+j)
+      hold.parentNode.removeChild(hold)
+    }
+  }
+  if (document.getElementById(group+'_tapergroup')) {
+    hold = document.getElementById(group+'_tapergroup')
+    hold.parentNode.removeChild(hold)
+  }
+  if (document.getElementById(group+'_buffergroup')) {
+    hold = document.getElementById(group+'_buffergroup')
+    hold.parentNode.removeChild(hold)
+  }
+  if (document.getElementById(group+'_transitiongroup')) {
+    hold = document.getElementById(group+'_transitiongroup')
+    hold.parentNode.removeChild(hold)
+  }
 }
 
 function refreshAll() {
