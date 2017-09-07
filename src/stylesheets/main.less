@@ -36,35 +36,93 @@
 
 text {
   font-size: 12px;
+  stroke: none;
+}
+
+h2 {
+  margin: 0 0 10px;
+}
+
+.container li {
+  list-style: none;
+}
+
+.container li a {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+.container li a:hover,
+.container li.active a {
+  background-color: #fff;
+  color: #333;
 }
 
 .green {
+  background-color: #588C73;
+  color: #fff;
   fill:#588C73;
+  border:#588C73 2px solid;
   stroke:#588C73;
 }
 
 .yellow {
+  background-color:#F2E394;
+  color: #333;
   fill:#F2E394;
+  border:#F2E394 2px solid;
   stroke:#F2E394;
 }
 
 .orange {
+  background-color:#F2AE72;
+  color: #333;
   fill:#F2AE72;
+  border:#F2AE72 2px solid;
   stroke:#F2AE72;
 }
 
 .red {
+  background-color:#D96459;
+  color: #fff;
   fill:#D96459;
+  border:#D96459 2px solid;
   stroke:#D96459;
 }
 
+.g1 {
+  border:#588C73 5px solid;
+}
+.g2 {
+  border:#D96459 5px solid;
+}
+.g3 {
+  border:#F2AE72 5px solid;
+}
+.g4 {
+  border:#535474 5px solid;
+}
+.g5 {
+  border:#F2E394 5px solid;
+}
+.g6 {
+  border:#54A4AF 5px solid;
+}
+
 .purple {
+  background-color:#535474;
+  color: #fff;
   fill:#535474;
+  border:#535474 2px solid;
   stroke:#535474;
 }
 
 .blue {
+  background-color:#54A4AF;
+  color: #fff;
   fill:#54A4AF;
+  border:#54A4AF 2px solid;
   stroke:#54A4AF;
 }
 
@@ -75,7 +133,7 @@ text {
 
 .column {
   flex: 1;
-  padding: 20px;
+  padding: 5px;
 }
 
 .row {
