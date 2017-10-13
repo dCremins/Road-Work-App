@@ -1,5 +1,6 @@
 const gulp = require('gulp');
 const less = require('gulp-less');
+const sass = require('gulp-sass');
 const watch = require('gulp-watch');
 const batch = require('gulp-batch');
 const plumber = require('gulp-plumber');
@@ -25,6 +26,13 @@ gulp.task('less', () => {
   .pipe(gulp.dest(destDir.path('stylesheets')));
 });
 
+gulp.task('sass', () => {
+  return gulp.src(srcDir.path('scss/main.scss'))
+  .pipe(plumber())
+  .pipe(sass().on('error', sass.logError))
+  .pipe(gulp.dest(destDir.path('style')));
+});
+
 gulp.task('environment', () => {
   const configFile = `config/env_${utils.getEnvName()}.json`;
   projectDir.copy(configFile, destDir.path('env.json'), { overwrite: true });
@@ -43,9 +51,9 @@ gulp.task('watch', () => {
   watch('src/**/*.js', batch((events, done) => {
     gulp.start('bundle', beepOnError(done));
   }));
-  watch('src/**/*.less', batch((events, done) => {
-    gulp.start('less', beepOnError(done));
+  watch('src/**/*.scss', batch((events, done) => {
+    gulp.start('sass', beepOnError(done));
   }));
 });
 
-gulp.task('build', ['bundle', 'less', 'environment']);
+gulp.task('build', ['bundle', 'sass', 'environment']);

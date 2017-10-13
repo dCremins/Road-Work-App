@@ -31,6 +31,17 @@ const paste = new MenuItem({
   },
 });
 
+let rightClickPosition = null
+
+const menu = new Menu()
+const menuItem = new MenuItem({
+  label: 'Inspect Element',
+  click: () => {
+    remote.getCurrentWindow().inspectElement(rightClickPosition.x, rightClickPosition.y)
+  }
+})
+menu.append(menuItem)
+
 const normalMenu = new Menu();
 normalMenu.append(copy);
 
@@ -51,5 +62,8 @@ document.addEventListener('contextmenu', (event) => {
         event.preventDefault();
         normalMenu.popup(remote.getCurrentWindow());
       }
+      event.preventDefault();
+      rightClickPosition = {x: event.x, y: event.y}
+      menu.popup(remote.getCurrentWindow())
   }
 }, false);

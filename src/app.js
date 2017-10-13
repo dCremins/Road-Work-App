@@ -1,31 +1,73 @@
-// Here is the starting point for your application code.
-
-// Small helpers you might want to keep
 import './helpers/context_menu.js';
 import './helpers/external_links.js';
+/*
+import '../app/js/snap.svg-min.js';
 
-// All stuff below is just to show you how it works. You can delete all of it.
-/*import { remote } from 'electron';
-import jetpack from 'fs-jetpack';
-import { greet } from './hello_world/hello_world';
-import env from './env';
+// Container
+  var svg = Snap('#svg_container');
 
-const app = remote.app;
-const appDir = jetpack.cwd(app.getAppPath());
+// Styles
+  var stripes = svg.path("M10-5-10,15M15,0,0,15M0-5-20,15").attr({
+    fill: "none",
+    stroke: "#aaa",
+    strokeWidth: 5
+  });
+  stripes = stripes.pattern(0, 0, 10, 10);
 
-// Holy crap! This is browser window with HTML and stuff, but I can read
-// here files form disk like it's node.js! Welcome to Electron world :)
-const manifest = appDir.read('package.json', 'json');
+// Road
+  var top = svg.line(10, 105, 1195, 105);
+  top.attr({
+    stroke: '#000000'
+  });
 
-const osMap = {
-  win32: 'Windows',
-  darwin: 'macOS',
-  linux: 'Linux',
-};
+  var middle = svg.line(25, 200, 1180, 200);
+  middle.attr({
+    stroke: '#000000',
+    strokeDasharray: '33.4706, 33.4706'
+  });
 
-document.querySelector('#greet').innerHTML = greet();
-document.querySelector('#os').innerHTML = osMap[process.platform];
-document.querySelector('#author').innerHTML = manifest.author;
-document.querySelector('#env').innerHTML = env.name;
-document.querySelector('#electron-version').innerHTML = process.versions.electron;
+  var bottom = svg.line(10, 300, 1195, 300);
+  bottom.attr({
+    stroke: '#000000'
+  });
+
+// Scale
+  var line = svg.line(10, 420, 1195, 420);
+  line.attr({
+    stroke: '#000000'
+  });
+  var x = 10;
+  for (i=0; i<=20; i++) {
+    var cap = svg.line(x, 410, x, 430).attr({
+      stroke: '#000000'
+    });
+    x+=(1185/20)
+  }
+
+// Work Zone
+var work_zone = svg.polygon(720, 295, 720, 215, 1015, 215, 1015, 295).attr({fill: stripes});
+var x = 733
+
+for (var i=1; i<=6; i++) {
+  var cone = svg.svg(x, 193, 20, 20)
+  var cA = cone.path("M9.3,0.2c0.4-0.1,0.7-0.1,1.1,0c0.6,0.1,0.9,0.5,1,1c0.8,2.7,1.7,5.5,2.5,8.2c0.4,1.5,1.1,2.8,2.4,3.9 c1.1,1,2.1,2.2,3.2,3.3c0.6,0.7,0.4,1.2-0.5,1.3c-0.3,0-0.5,0.1-0.8,0.1c-3.8,0.6-7.6,1.1-11.3,1.7c-0.6,0.1-1,0-1.4-0.5 c-0.4-0.5-1-1-1.4-1.5c-1.2-1.3-2.4-2.6-3.7-3.9c0-0.1,0-0.2,0-0.3c0.2-0.4,0.6-0.5,1.1-0.6c1-0.1,2-0.3,2.9-0.4 c0.4-0.1,0.6-0.2,0.7-0.6c1.1-3.7,2.2-7.3,3.3-11C8.5,0.7,8.7,0.4,9.3,0.2z")
+  var cB = cone.path("M12.5,6.9c0.3,1,0.6,2,0.9,3c0,0.2-0.2,0.5-0.4,0.6c-0.6,0.2-1.3,0.4-1.9,0.5c-1.3,0.2-2.7,0.1-4-0.3 c-0.8-0.3-0.8-0.4-0.6-1.1C6.7,8.8,7,7.9,7.2,7.1c0-0.1,0-0.1,0.1-0.2C9,7.5,10.7,7.5,12.5,6.9z").attr({
+    fill: '#fff'
+  })
+  var cC = cone.path("M10.1,17.5c-1.6,0-3-0.1-4.2-0.6c-0.4-0.2-1.4-0.6-1.3-1.1c0,0,0,0,0,0c0,0,0,0,0,0c0.6,0.1,1.1,0.3,1.6,0.4 c0.6,0.2,1.3,0.3,2,0.3c1.1,0.1,2.2,0.1,3.3-0.1c0.8-0.2,1.7-0.4,2.3-1c0.2-0.2,0.4-0.5,0.5-0.8c0.1-0.3,0-0.6,0-0.9 c0-0.4,0-0.7,0.2-1.1c0.1-0.2,0.2-0.2,0.3,0c0.2,0.6,0.4,1.1,0.5,1.7s0,1.2-0.4,1.7c-0.3,0.4-0.7,0.7-1.1,0.9 c-0.6,0.3-1.3,0.3-2,0.4C11.1,17.4,10.5,17.5,10.1,17.5z").attr({
+    fill: '#fff'
+  })
+  var cD = cone.path("M10.8,6.3c0,0-0.1,0-0.1,0c-0.3-0.2,0-0.8,0.1-1.1c0.1-0.5,0.1-1,0-1.5c0-0.5-0.2-0.9-0.2-1.4 c0-0.2,0-0.6,0.1-0.7c0.2-0.2,0.6,0.9,0.7,1.1c0.1,0.5,0.3,1.1,0.4,1.6c0.1,0.3,0.2,0.6,0.3,1c0.1,0.3,0.2,0.7-0.1,0.9 C11.7,6.3,11.1,6.4,10.8,6.3z").attr({
+    fill: '#fff'
+  })
+  var cE = cone.path("M10.7,0.7c-0.5,0.3-1.1,0.3-1.6,0C9.6,0.4,10.2,0.4,10.7,0.7z").attr({
+    fill: '#fff'
+  })
+  cA.attr({
+    fill: '#FF7900'
+  })
+  var coneGroup = svg.g(cone)
+
+  x+=50
+}
 */
